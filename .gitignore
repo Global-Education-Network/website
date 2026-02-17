@@ -3,6 +3,8 @@ node_modules/
 
 # Build output
 dist/
+dist-server/
+prisma/generated/
 
 # IDE
 .idea/

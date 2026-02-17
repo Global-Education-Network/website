@@ -1,0 +1,141 @@
+/* ---- Register page layout ---- */
+.register-main {
+  justify-content: flex-start;
+  padding-top: 4rem;
+}
+
+.back-link {
+  color: var(--color-primary-light);
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  transition: opacity 0.2s;
+}
+
+.back-link:hover {
+  opacity: 0.8;
+}
+
+#register-form {
+  width: 100%;
+  max-width: 520px;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+
+/* ---- Form groups ---- */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label,
+.form-group legend {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--color-text);
+}
+
+fieldset.form-group {
+  border: none;
+  padding: 0;
+}
+
+.required {
+  color: var(--color-accent);
+}
+
+/* ---- Inputs & textarea ---- */
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 1rem;
+  font-family: var(--font);
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: 0.4rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: var(--color-primary);
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ---- Checkboxes & radios ---- */
+.check-label,
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  padding: 0.3rem 0;
+  cursor: pointer;
+  color: var(--color-text-muted);
+}
+
+.check-label:hover,
+.radio-label:hover {
+  color: var(--color-text);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--color-primary);
+  width: 1.1rem;
+  height: 1.1rem;
+  cursor: pointer;
+}
+
+/* ---- "Other" text input ---- */
+.other-input {
+  margin-top: 0.4rem;
+  max-width: 280px;
+}
+
+.other-input:disabled {
+  opacity: 0.4;
+}
+
+/* ---- Submit button ---- */
+.submit-btn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  font-family: var(--font);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---- Feedback message ---- */
+.form-message {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  padding: 0.75rem;
+  border-radius: 0.4rem;
+}
+
+.form-message.success {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
+}
+
+.form-message.error {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.1);
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GEN - Register as a Volunteer / Supporter</title>
+    <meta
+      name="description"
+      content="Register to volunteer or support the Global Education Network."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="/src/register.css" />
+  </head>
+  <body>
+    <div class="bg-glow" aria-hidden="true"></div>
+
+    <main class="register-main">
+      <p class="brand">Global Education Network</p>
+      <h1>Join Us</h1>
+      <p class="subtitle">
+        Register as a volunteer or supporter and help us make a difference.
+      </p>
+      <a href="/" class="back-link">&larr; Back to Home</a>
+
+      <form id="register-form" novalidate>
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <!-- Name -->
+        <div class="form-group">
+          <label for="name">Name <span class="required">*</span></label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <!-- Contact -->
+        <div class="form-group">
+          <label for="contact">Contact (phone or other)</label>
+          <input type="text" id="contact" name="contact" />
+        </div>
+
+        <!-- Contributions -->
+        <fieldset class="form-group">
+          <legend>How would you like to contribute? <span class="required">*</span></legend>
+          <label class="check-label">
+            <input type="checkbox" name="contributions" value="Mentor" /> Mentor
+          </label>
+          <label class="check-label">
+            <input type="checkbox" name="contributions" value="Donor" /> Donor
+          </label>
+          <label class="check-label">
+            <input type="checkbox" name="contributions" value="IT/Technical support" /> IT/Technical support
+          </label>
+          <label class="check-label">
+            <input type="checkbox" name="contributions" value="Legal support" /> Legal support
+          </label>
+          <label class="check-label">
+            <input type="checkbox" name="contributions" value="Accounting" /> Accounting
+          </label>
+          <label class="check-label">
+            <input type="checkbox" name="contributions" value="Case verification" /> Case verification
+          </label>
+          <label class="check-label">
+            <input type="checkbox" name="contributions" value="Other" id="contrib-other-check" /> Other
+          </label>
+          <input
+            type="text"
+            id="contribution-other"
+            name="contributionOther"
+            placeholder="Please specify"
+            class="other-input"
+            disabled
+          />
+        </fieldset>
+
+        <!-- Donation commitment -->
+        <fieldset class="form-group">
+          <legend>Monthly donation commitment</legend>
+          <label class="radio-label">
+            <input type="radio" name="donationCommitment" value="200 NOK / 20 USD" />
+            200 NOK / 20 USD
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="donationCommitment" value="300 NOK / 30 USD" />
+            300 NOK / 30 USD (Recommended)
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="donationCommitment" value="500 NOK / 50 USD" />
+            500 NOK / 50 USD
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="donationCommitment" value="other" id="donation-other-radio" />
+            Other
+          </label>
+          <input
+            type="text"
+            id="donation-other"
+            name="donationOther"
+            placeholder="Enter amount"
+            class="other-input"
+            disabled
+          />
+        </fieldset>
+
+        <!-- Contact permission -->
+        <fieldset class="form-group">
+          <legend>May we contact you? <span class="required">*</span></legend>
+          <label class="radio-label">
+            <input type="radio" name="contactPermission" value="yes" required /> Yes
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="contactPermission" value="no" /> No
+          </label>
+        </fieldset>
+
+        <!-- Feedback -->
+        <div class="form-group">
+          <label for="feedback">Feedback or comments</label>
+          <textarea id="feedback" name="feedback" rows="4"></textarea>
+        </div>
+
+        <button type="submit" class="join-btn submit-btn">Submit</button>
+
+        <p id="form-message" class="form-message" hidden></p>
+      </form>
+    </main>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Global Education Network</p>
+    </footer>
+
+    <script type="module" src="/src/register.ts"></script>
+  </body>
+</html>

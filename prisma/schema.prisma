@@ -1,0 +1,21 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+model Registration {
+  id                 Int      @id @default(autoincrement())
+  email              String   @unique
+  name               String
+  contact            String?
+  contributions      String[]
+  contributionOther  String?
+  donationCommitment String?
+  contactPermission  Boolean
+  feedback           String?
+  createdAt          DateTime @default(now())
+}
