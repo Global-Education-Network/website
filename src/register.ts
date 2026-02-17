@@ -104,7 +104,32 @@ form.addEventListener("submit", async (e) => {
     });
 
     if (res.ok) {
-      window.location.href = "/";
+      form.hidden = true;
+      message.hidden = true;
+
+      const successDiv = document.createElement("div");
+      successDiv.className = "success-screen";
+
+      let seconds = 10;
+      successDiv.innerHTML = `
+        <div class="success-icon">&#10003;</div>
+        <h2>Registration Successful!</h2>
+        <p>Thank you for registering. Your form has been successfully submitted.</p>
+        <p class="countdown">Redirecting to home in <span id="countdown-timer">${seconds}</span> seconds...</p>
+        <a href="/" class="join-btn home-btn">Go to Home</a>
+      `;
+      form.parentElement!.insertBefore(successDiv, form);
+
+      const timerSpan = document.getElementById("countdown-timer")!;
+      const interval = setInterval(() => {
+        seconds--;
+        timerSpan.textContent = String(seconds);
+        if (seconds <= 0) {
+          clearInterval(interval);
+          window.location.href = "/";
+        }
+      }, 1000);
+
       return;
     } else {
       const data = await res.json();
