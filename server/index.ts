@@ -61,9 +61,10 @@ app.post("/api/register", async (req, res) => {
   }
 });
 
-// In production, serve the built frontend
-if (process.env.NODE_ENV === "production") {
-  const distPath = path.resolve(__dirname, "..", "dist");
+// Serve the built frontend if it exists
+import { existsSync } from "fs";
+const distPath = path.resolve(__dirname, "..", "dist");
+if (existsSync(distPath)) {
   app.use(express.static(distPath));
   app.get("*", (_req, res) => {
     res.sendFile(path.join(distPath, "index.html"));
