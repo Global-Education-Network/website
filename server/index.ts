@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import path from "path";
+import { existsSync } from "fs";
 import { fileURLToPath } from "url";
 import { PrismaClient } from "../prisma/generated/client.js";
 import { PrismaPg } from "@prisma/adapter-pg";
@@ -62,7 +63,6 @@ app.post("/api/register", async (req, res) => {
 });
 
 // Serve the built frontend if it exists
-import { existsSync } from "fs";
 const distPath = path.resolve(__dirname, "..", "dist");
 if (existsSync(distPath)) {
   app.use(express.static(distPath));

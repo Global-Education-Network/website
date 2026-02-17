@@ -49,9 +49,8 @@ Open `http://localhost:5173`
 ## Production Build
 
 ```bash
-npm run build          # Frontend → dist/
-npm run build:server   # Server → dist-server/
-node dist-server/index.js
+npm run build    # Frontend → dist/
+npm start        # Starts server (serves API + frontend)
 ```
 
 ## Scripts
@@ -61,7 +60,6 @@ node dist-server/index.js
 | `dev:client` | Start Vite dev server |
 | `dev:server` | Start Express with hot reload |
 | `build` | Build frontend |
-| `build:server` | Compile server TypeScript |
 | `db:generate` | Generate Prisma client |
 | `db:migrate` | Run Prisma migrations |
 | `start` | Run production server |
