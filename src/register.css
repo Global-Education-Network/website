@@ -1,7 +1,98 @@
-/* ---- Register page layout ---- */
+/* ---- Background glow (register page) ---- */
+.bg-glow {
+  position: fixed;
+  top: -40%;
+  left: 50%;
+  translate: -50% 0;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.08) 0%,
+    rgba(59, 130, 246, 0.02) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---- Register page base (previously from global style.css) ---- */
 .register-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
   justify-content: flex-start;
   padding-top: 4rem;
+}
+
+.register-main .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  margin-bottom: 1.5rem;
+}
+
+.register-main h1 {
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 30%, var(--color-primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.register-main .subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.register-main + footer {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+/* ---- Join / submit button ---- */
+.join-btn {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 600;
+  font-family: var(--font);
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.join-btn:hover {
+  background: var(--color-primary-light);
+}
+
+.join-btn:active {
+  transform: scale(0.97);
+}
+
+/* ---- Entrance animation ---- */
+.register-main {
+  opacity: 0;
+  animation: fade-up 0.7s ease-out 0.1s forwards;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .back-link {

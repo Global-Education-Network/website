@@ -3,35 +3,293 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GEN - Global Education Network | Coming Soon</title>
+    <title>GEN - Global Education Network | Empowering Education. Transforming Futures.</title>
     <meta
       name="description"
-      content="Global Education Network - Providing free, quality education to students in medium and lower income countries. Launching soon."
+      content="Global Education Network (GEN) is a volunteer-driven initiative supporting underprivileged students in Pakistan. We connect sponsors with deserving students to ensure consistent financial and mentorship support."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <div class="bg-glow" aria-hidden="true"></div>
+    <!-- ========== NAVIGATION ========== -->
+    <header class="site-header" id="site-header">
+      <nav class="nav-container">
+        <a href="#" class="nav-logo">
+          <span>Global Education Network</span>
+        </a>
 
-    <main>
-      <p class="brand">Global Education Network</p>
-      <h1>Website Coming Soon</h1>
-      <p class="subtitle">
-        We're working on something meaningful. Stay tuned.
-      </p>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
 
-      <a href="/register.html" class="join-btn">
-        Join Us
-      </a>
-    </main>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#mission" class="nav-link">Mission</a></li>
+          <li><a href="#impact" class="nav-link">Impact</a></li>
+          <li><a href="#sponsorship" class="nav-link">Sponsorship</a></li>
+          <li><a href="/register.html" class="nav-link nav-cta">Join Us</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <footer>
-      <p>&copy; <span id="year"></span> Global Education Network</p>
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg-overlay" aria-hidden="true"></div>
+      <div class="hero-content reveal">
+        <p class="hero-tagline">Empowering Education. Transforming Futures.</p>
+        <h1 class="hero-title">No Child Without<br />School Education</h1>
+        <p class="hero-subtitle">Together, we ensure every child has access to quality education.</p>
+        <div class="hero-actions">
+          <a href="/register.html" class="btn btn-primary">Become a Sponsor</a>
+          <a href="#about" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-image-wrap reveal">
+        <img src="/slide.png" alt="A young student studying with books and a graduation cap" class="hero-image" />
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Who We Are</span>
+          <h2 class="section-title">About Us</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p class="about-lead">
+              Global Education Network (GEN) is a volunteer-driven initiative supporting
+              underprivileged students in Pakistan. We connect sponsors from Norway and beyond
+              with deserving students to ensure consistent financial and mentorship support.
+            </p>
+            <p class="about-disclaimer">
+              Our initial focus is Pakistan, but we plan to expand our scope in the future.
+            </p>
+          </div>
+          <div class="about-visual reveal">
+            <div class="about-icon-card">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="about-svg" aria-hidden="true">
+                <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="1.5" opacity="0.15"/>
+                <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+                <path d="M32 12 L32 52" stroke="currentColor" stroke-width="1" opacity="0.2"/>
+                <path d="M12 32 L52 32" stroke="currentColor" stroke-width="1" opacity="0.2"/>
+                <circle cx="32" cy="20" r="3" fill="currentColor" opacity="0.7"/>
+                <circle cx="22" cy="28" r="2.5" fill="currentColor" opacity="0.5"/>
+                <circle cx="42" cy="28" r="2.5" fill="currentColor" opacity="0.5"/>
+                <circle cx="26" cy="38" r="2" fill="currentColor" opacity="0.4"/>
+                <circle cx="38" cy="38" r="2" fill="currentColor" opacity="0.4"/>
+                <circle cx="32" cy="44" r="2.5" fill="currentColor" opacity="0.6"/>
+                <path d="M32 20 L22 28" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                <path d="M32 20 L42 28" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                <path d="M22 28 L26 38" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                <path d="M42 28 L38 38" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                <path d="M26 38 L32 44" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                <path d="M38 38 L32 44" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+              </svg>
+              <p class="about-icon-label">A Global Network of Sponsors &amp; Students</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MISSION & VISION ========== -->
+    <section class="section mission" id="mission">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">What Drives Us</span>
+          <h2 class="section-title">Mission &amp; Vision</h2>
+        </div>
+        <div class="mission-grid">
+          <div class="mission-card reveal">
+            <div class="mission-card-icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                <path d="M24 8 L24 40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M16 16 L24 8 L32 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+              </svg>
+            </div>
+            <h3>Our Vision</h3>
+            <p>No child without school education in Pakistan.</p>
+          </div>
+          <div class="mission-card reveal">
+            <div class="mission-card-icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="4" y="4" width="40" height="40" rx="8" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                <path d="M14 24 L20 30 L34 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Our Mission</h3>
+            <p>All children deserve an equal right to education.</p>
+          </div>
+        </div>
+        <div class="values-section reveal">
+          <h3 class="values-heading">Core Values</h3>
+          <div class="values-grid">
+            <div class="value-item">
+              <svg viewBox="0 0 32 32" fill="none" class="value-icon" aria-hidden="true"><path d="M16 4 L16 28 M4 16 L28 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1" opacity="0.2"/></svg>
+              <span>Transparency &amp; Accountability</span>
+            </div>
+            <div class="value-item">
+              <svg viewBox="0 0 32 32" fill="none" class="value-icon" aria-hidden="true"><circle cx="16" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="8" cy="18" r="3" stroke="currentColor" stroke-width="1.5" opacity="0.5"/><circle cx="24" cy="18" r="3" stroke="currentColor" stroke-width="1.5" opacity="0.5"/><path d="M10 28 C10 23, 22 23, 22 28" stroke="currentColor" stroke-width="2"/></svg>
+              <span>Community Engagement</span>
+            </div>
+            <div class="value-item">
+              <svg viewBox="0 0 32 32" fill="none" class="value-icon" aria-hidden="true"><path d="M6 26 L16 6 L26 26" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20 L22 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span>Long-term Mentorship</span>
+            </div>
+            <div class="value-item">
+              <svg viewBox="0 0 32 32" fill="none" class="value-icon" aria-hidden="true"><path d="M8 24 C8 16, 12 12, 16 8 C20 12, 24 16, 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 24 L24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <span>Sustainable Sponsorship</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== IMPACT ========== -->
+    <section class="section impact" id="impact">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Our Track Record</span>
+          <h2 class="section-title">Current Impact</h2>
+          <p class="section-subtitle">November 2020 &ndash; August 2025</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card reveal">
+            <span class="stat-number" data-count="34">0</span>
+            <span class="stat-label">Students Supported</span>
+          </div>
+          <div class="stat-card reveal">
+            <span class="stat-number" data-count="11">0</span>
+            <span class="stat-label">Active Sponsors &amp; Mentors</span>
+          </div>
+          <div class="stat-card reveal">
+            <span class="stat-number stat-currency">9,000</span>
+            <span class="stat-label">NOK Disbursed Monthly</span>
+          </div>
+          <div class="stat-card reveal">
+            <span class="stat-number stat-currency">$900</span>
+            <span class="stat-label">USD Monthly Support</span>
+          </div>
+        </div>
+
+        <div class="targets reveal">
+          <h3 class="targets-heading">2026 Targets</h3>
+          <div class="targets-grid">
+            <div class="target-card">
+              <span class="target-number">100+</span>
+              <span class="target-text">Students Sponsored</span>
+            </div>
+            <div class="target-card">
+              <span class="target-number">50+</span>
+              <span class="target-text">Active Sponsors Onboarded</span>
+            </div>
+            <div class="target-card">
+              <span class="target-number">180K</span>
+              <span class="target-text">NOK Raised</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SPONSORSHIP ========== -->
+    <section class="section sponsorship" id="sponsorship">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">How It Works</span>
+          <h2 class="section-title">Sponsorship Details</h2>
+        </div>
+        <div class="sponsorship-grid">
+          <div class="sponsorship-block reveal">
+            <h3>What Our Sponsorship Covers</h3>
+            <ul class="coverage-list">
+              <li>
+                <svg viewBox="0 0 20 20" fill="none" class="check-icon" aria-hidden="true"><path d="M4 10 L8 14 L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                School or university tuition fees
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="none" class="check-icon" aria-hidden="true"><path d="M4 10 L8 14 L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Books, uniforms, and academic supplies
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="none" class="check-icon" aria-hidden="true"><path d="M4 10 L8 14 L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Supplementary tuition if required
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="none" class="check-icon" aria-hidden="true"><path d="M4 10 L8 14 L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Essential on-ground educational resources
+              </li>
+            </ul>
+          </div>
+          <div class="sponsorship-block reveal">
+            <h3>Commitment Terms</h3>
+            <div class="commitment-cards">
+              <div class="commitment-card">
+                <h4>Sponsor Commitment</h4>
+                <p>Fixed monthly contribution for 6&ndash;12 months.</p>
+              </div>
+              <div class="commitment-card">
+                <h4>Student Commitment</h4>
+                <p>Typically 1 academic year (renewable).</p>
+              </div>
+            </div>
+            <div class="sponsor-range">
+              <p class="range-label">Monthly contribution range</p>
+              <div class="range-bar">
+                <span class="range-min">150 NOK</span>
+                <div class="range-track"><div class="range-fill"></div></div>
+                <span class="range-max">4,500 NOK</span>
+              </div>
+              <p class="range-average">Average: <strong>750 NOK / month</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== JOIN / CTA ========== -->
+    <section class="section cta" id="join">
+      <div class="container">
+        <div class="cta-content reveal">
+          <h2 class="cta-title">Transform a Child's Future</h2>
+          <p class="cta-text">
+            Your monthly contribution &mdash; starting from <strong>300 NOK (30 USD)</strong> &mdash;
+            can ensure that no child is left behind. Join our growing network of sponsors and mentors.
+          </p>
+          <div class="cta-actions">
+            <a href="/register.html" class="btn btn-primary btn-lg">Start Sponsoring Today</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img src="/favicon.svg" alt="" class="footer-logo" />
+          <span class="footer-name">Global Education Network</span>
+        </div>
+        <nav class="footer-links">
+          <a href="#about">About</a>
+          <a href="#mission">Mission</a>
+          <a href="#impact">Impact</a>
+          <a href="#sponsorship">Sponsorship</a>
+          <a href="/register.html">Join Us</a>
+        </nav>
+        <p class="footer-copy">&copy; <span id="year"></span> Global Education Network (GEN). All rights reserved.</p>
+      </div>
     </footer>
 
     <script type="module" src="/src/main.ts"></script>
