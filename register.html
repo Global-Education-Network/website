@@ -40,6 +40,17 @@
           <input type="text" id="name" name="name" required />
         </div>
 
+        <!-- Country Dialing Code -->
+        <div class="form-group">
+          <label for="country-dialing-code">Country dialing code</label>
+          <input
+            type="text"
+            id="country-dialing-code"
+            name="countryDialingCode"
+            placeholder="+47"
+          />
+        </div>
+
         <!-- Contact -->
         <div class="form-group">
           <label for="contact">Contact (phone or other)</label>
@@ -83,28 +94,41 @@
         <!-- Donation commitment -->
         <fieldset class="form-group">
           <legend>Monthly donation commitment</legend>
+          <div class="form-group" style="margin-bottom: 0.75rem;">
+            <label for="currency">Currency</label>
+            <select id="currency" name="currency">
+              <option value="">-- Select --</option>
+              <option value="NOK" selected>NOK</option>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+              <option value="PKR">PKR</option>
+            </select>
+          </div>
           <label class="radio-label">
-            <input type="radio" name="donationCommitment" value="200 NOK / 20 USD" />
-            200 NOK / 20 USD
+            <input type="radio" name="donationCommitment" value="200" />
+            200
           </label>
           <label class="radio-label">
-            <input type="radio" name="donationCommitment" value="300 NOK / 30 USD" />
-            300 NOK / 30 USD (Recommended)
+            <input type="radio" name="donationCommitment" value="300" />
+            300 (Recommended)
           </label>
           <label class="radio-label">
-            <input type="radio" name="donationCommitment" value="500 NOK / 50 USD" />
-            500 NOK / 50 USD
+            <input type="radio" name="donationCommitment" value="500" />
+            500
           </label>
           <label class="radio-label">
             <input type="radio" name="donationCommitment" value="other" id="donation-other-radio" />
             Other
           </label>
           <input
-            type="text"
+            type="number"
             id="donation-other"
             name="donationOther"
             placeholder="Enter amount"
             class="other-input"
+            min="1"
+            step="any"
             disabled
           />
         </fieldset>

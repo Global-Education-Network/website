@@ -5,16 +5,13 @@ Website for the Global Education Network, an NGO dedicated to providing free, qu
 ## Stack
 
 - TypeScript
-- Vite (frontend)
-- Express (API)
-- Prisma + PostgreSQL (database)
+- Vite
 
 ## Local Development
 
 ### Prerequisites
 
 - Node.js
-- PostgreSQL database (e.g. Supabase)
 
 ### Setup
 
@@ -22,26 +19,18 @@ Website for the Global Education Network, an NGO dedicated to providing free, qu
 npm install
 ```
 
-Create a `.env` file in the project root:
+Optionally create a `.env` file to enable registration:
 
 ```
-GEN_DB_URL=postgresql://user:password@host:5432/dbname
+VITE_BACKEND_URL=http://localhost:8000
 ```
 
-Generate the Prisma client and run migrations:
-
-```bash
-npx prisma generate
-npx prisma migrate dev --name init
-```
+If `VITE_BACKEND_URL` is not set, the website works normally but registration will show an unavailable message.
 
 ### Run
 
-Start both servers in separate terminals:
-
 ```bash
-npm run dev:server    # Express API on :3000
-npm run dev:client    # Vite dev server on :5173
+npm run dev
 ```
 
 Open `http://localhost:5173`
@@ -49,17 +38,15 @@ Open `http://localhost:5173`
 ## Production Build
 
 ```bash
-npm run build    # Frontend → dist/
-npm start        # Starts server (serves API + frontend)
+npm run build    # Output → dist/
 ```
+
+The `dist/` folder is a static site that can be served by any web server.
 
 ## Scripts
 
 | Script | Description |
 |--------|-------------|
-| `dev:client` | Start Vite dev server |
-| `dev:server` | Start Express with hot reload |
-| `build` | Build frontend |
-| `db:generate` | Generate Prisma client |
-| `db:migrate` | Run Prisma migrations |
-| `start` | Run production server |
+| `dev` | Start Vite dev server |
+| `build` | Build static site to `dist/` |
+| `preview` | Preview production build |

@@ -31,6 +31,18 @@ document.querySelectorAll<HTMLInputElement>('input[name="donationCommitment"]').
   });
 });
 
+const SERVICE_DOWN_MSG = "We're sorry, our registration service is temporarily unavailable. Please try again later.";
+
+function extractError(data: any): string {
+  if (typeof data?.detail === "string") return data.detail;
+  if (Array.isArray(data?.detail)) {
+    return data.detail.map((e: any) => e.msg || String(e)).join("; ");
+  }
+  if (typeof data?.error === "string") return data.error;
+  if (typeof data?.message === "string") return data.message;
+  return SERVICE_DOWN_MSG;
+}
+
 // Submit handler
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -38,6 +50,7 @@ form.addEventListener("submit", async (e) => {
 
   const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
   const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
+  const countryDialingCode = (form.elements.namedItem("countryDialingCode") as HTMLInputElement).value.trim();
   const contact = (form.elements.namedItem("contact") as HTMLInputElement).value.trim();
   const feedback = (form.elements.namedItem("feedback") as HTMLTextAreaElement).value.trim();
 
@@ -45,23 +58,30 @@ form.addEventListener("submit", async (e) => {
   const checked = form.querySelectorAll<HTMLInputElement>(
     'input[name="contributions"]:checked'
   );
-  const contributions = Array.from(checked).map((cb) => cb.value);
-
-  const contributionOther = contribOtherCheck.checked
-    ? contribOtherInput.value.trim()
-    : "";
+  const contributions = Array.from(checked).map((cb) => {
+    if (cb.value === "Other" && contribOtherCheck.checked && contribOtherInput.value.trim()) {
+      return contribOtherInput.value.trim();
+    }
+    return cb.value;
+  });
 
   // Donation commitment
   const donationRadio = form.querySelector<HTMLInputElement>(
     'input[name="donationCommitment"]:checked'
   );
-  let donationCommitment = "";
+  let donationCommitment: number | null = null;
   if (donationRadio) {
-    donationCommitment =
-      donationRadio.value === "other"
-        ? donationOtherInput.value.trim()
-        : donationRadio.value;
+    if (donationRadio.value === "other") {
+      const val = parseFloat(donationOtherInput.value.trim());
+      if (!isNaN(val) && val > 0) donationCommitment = val;
+    } else {
+      donationCommitment = parseFloat(donationRadio.value);
+    }
   }
+
+  // Currency
+  const currencySelect = form.elements.namedItem("currency") as HTMLSelectElement;
+  const currency = currencySelect.value || null;
 
   // Contact permission
   const permRadio = form.querySelector<HTMLInputElement>(
@@ -84,23 +104,34 @@ form.addEventListener("submit", async (e) => {
 
   const contactPermission = permRadio.value === "yes";
 
+  const payload: Record<string, unknown> = {
+    email,
+    name,
+    contributions,
+    contact_permission: contactPermission,
+  };
+
+  if (countryDialingCode) payload.country_dialing_code = countryDialingCode;
+  if (contact) payload.contact = contact;
+  if (donationCommitment !== null) payload.donation_commitment = donationCommitment;
+  if (donationCommitment !== null && currency) payload.currency = currency;
+  if (feedback) payload.feedback = feedback;
+
   const submitBtn = form.querySelector("button[type='submit']") as HTMLButtonElement;
   submitBtn.disabled = true;
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  if (!backendUrl) {
+    showMessage("Registration is currently unavailable. Please try again later.", "error");
+    submitBtn.disabled = false;
+    return;
+  }
+
   try {
-    const res = await fetch("/api/register", {
+    const res = await fetch(`${backendUrl}/registrations`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email,
-        name,
-        contact,
-        contributions,
-        contributionOther,
-        donationCommitment,
-        contactPermission,
-        feedback,
-      }),
+      body: JSON.stringify(payload),
     });
 
     if (res.ok) {
@@ -132,11 +163,16 @@ form.addEventListener("submit", async (e) => {
 
       return;
     } else {
-      const data = await res.json();
-      showMessage(data.error || "Something went wrong. Please try again.", "error");
+      try {
+        const data = await res.json();
+        const msg = extractError(data);
+        showMessage(msg, "error");
+      } catch {
+        showMessage(SERVICE_DOWN_MSG, "error");
+      }
     }
   } catch {
-    showMessage("Network error. Please check your connection and try again.", "error");
+    showMessage(SERVICE_DOWN_MSG, "error");
   } finally {
     submitBtn.disabled = false;
   }
