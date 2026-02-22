@@ -141,6 +141,7 @@ fieldset.form-group {
 input[type="text"],
 input[type="email"],
 input[type="number"],
+input[type="tel"],
 select,
 textarea {
   width: 100%;
@@ -158,6 +159,7 @@ textarea {
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="number"]:focus,
+input[type="tel"]:focus,
 select:focus,
 textarea:focus {
   border-color: var(--color-primary);
@@ -190,6 +192,149 @@ input[type="radio"] {
   width: 1.1rem;
   height: 1.1rem;
   cursor: pointer;
+}
+
+/* ---- Phone input group ---- */
+.phone-input-group {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 0.4rem;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.phone-input-group:focus-within {
+  border-color: var(--color-primary);
+}
+
+.country-code-select {
+  width: auto !important;
+  min-width: 110px;
+  border: none !important;
+  border-right: 1px solid var(--color-border) !important;
+  border-radius: 0 !important;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.95rem;
+  padding: 0.65rem 0.6rem;
+  cursor: pointer;
+}
+
+.country-code-select:focus {
+  border-color: transparent !important;
+  outline: none;
+}
+
+.phone-input-group input[type="tel"] {
+  flex: 1;
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.65rem 0.85rem;
+  font-size: 1rem;
+  font-family: var(--font);
+  color: var(--color-text);
+  outline: none;
+  min-width: 0;
+}
+
+/* ---- Donation cards ---- */
+.donation-section legend {
+  margin-bottom: 0.6rem;
+}
+
+.currency-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.currency-row label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0 !important;
+  white-space: nowrap;
+}
+
+.currency-select {
+  width: auto !important;
+  min-width: 100px;
+}
+
+.donation-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.donation-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.1rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.1s;
+  text-align: center;
+}
+
+.donation-card:hover {
+  border-color: var(--color-primary);
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.donation-card:active {
+  transform: scale(0.97);
+}
+
+.donation-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.donation-card input[type="radio"]:checked ~ .card-amount {
+  color: #fff;
+}
+
+.donation-card:has(input:checked) {
+  border-color: var(--color-primary);
+  background: rgba(59, 130, 246, 0.15);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.card-amount {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+}
+
+.card-badge {
+  position: absolute;
+  top: -0.55rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 1rem;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .donation-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* ---- "Other" text input ---- */

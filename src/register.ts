@@ -22,6 +22,49 @@ const donationOtherRadio = document.getElementById(
 const donationOtherInput = document.getElementById(
   "donation-other"
 ) as HTMLInputElement;
+const currencyEl = document.getElementById("currency") as HTMLSelectElement;
+
+// Donation tiers per currency (NOK base, others are 1/10)
+const NOK_TIERS = [200, 300, 500];
+const OTHER_TIERS = [20, 30, 50];
+
+function getTiers(currency: string): number[] {
+  return currency === "NOK" ? NOK_TIERS : OTHER_TIERS;
+}
+
+function updateDonationAmounts() {
+  const tiers = getTiers(currencyEl.value || "USD");
+  const cards = document.querySelectorAll<HTMLElement>(".donation-card");
+  cards.forEach((card, i) => {
+    const radio = card.querySelector<HTMLInputElement>('input[type="radio"]');
+    const amountSpan = card.querySelector<HTMLElement>(".card-amount");
+    if (!radio || !amountSpan || radio.id === "donation-other-radio") return;
+    radio.value = String(tiers[i]);
+    amountSpan.textContent = String(tiers[i]);
+  });
+}
+
+// Map country dialing codes to their actual currency; unlisted codes default to USD
+const dialingCodeToCurrency: Record<string, string> = {
+  "+47": "NOK",
+  "+44": "GBP",
+  "+49": "EUR",
+};
+
+const countryCodeEl = document.getElementById("country-dialing-code") as HTMLSelectElement;
+
+function syncCurrencyFromDialingCode() {
+  const mapped = dialingCodeToCurrency[countryCodeEl.value] || "USD";
+  currencyEl.value = mapped;
+  updateDonationAmounts();
+}
+
+countryCodeEl.addEventListener("change", syncCurrencyFromDialingCode);
+
+// Sync on page load so currency matches the default dialing code
+syncCurrencyFromDialingCode();
+
+currencyEl.addEventListener("change", updateDonationAmounts);
 
 document.querySelectorAll<HTMLInputElement>('input[name="donationCommitment"]').forEach((radio) => {
   radio.addEventListener("change", () => {
@@ -50,7 +93,7 @@ form.addEventListener("submit", async (e) => {
 
   const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
   const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
-  const countryDialingCode = (form.elements.namedItem("countryDialingCode") as HTMLInputElement).value.trim();
+  const countryDialingCode = (form.elements.namedItem("countryDialingCode") as HTMLSelectElement).value.trim();
   const contact = (form.elements.namedItem("contact") as HTMLInputElement).value.trim();
   const feedback = (form.elements.namedItem("feedback") as HTMLTextAreaElement).value.trim();
 
