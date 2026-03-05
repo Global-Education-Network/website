@@ -1,5 +1,11 @@
 import "./footer";
 
+// Wake up the backend as soon as the page loads (fire-and-forget)
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+if (backendUrl) {
+  fetch(`${backendUrl}/health`).catch(() => {});
+}
+
 const form = document.getElementById("register-form") as HTMLFormElement;
 const message = document.getElementById("form-message") as HTMLParagraphElement;
 
@@ -163,7 +169,6 @@ form.addEventListener("submit", async (e) => {
   const submitBtn = form.querySelector("button[type='submit']") as HTMLButtonElement;
   submitBtn.disabled = true;
 
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   if (!backendUrl) {
     showMessage("Registration is currently unavailable. Please try again later.", "error");
     submitBtn.disabled = false;
@@ -171,7 +176,7 @@ form.addEventListener("submit", async (e) => {
   }
 
   try {
-    const res = await fetch(`${backendUrl}/registrations`, {
+    const res = await fetch(`${backendUrl}/api/registrations`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
