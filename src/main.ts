@@ -17,7 +17,10 @@ document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el))
 
 // ── Animated counters ───────────────────────────────────────────
 function animateCounter(el: HTMLElement) {
-  const target = Number(el.dataset.count);
+  const raw = el.dataset.count ?? "";
+  const cleaned = raw.replace(/,/g, "");
+  const suffix = cleaned.replace(/\d/g, "");
+  const target = parseInt(cleaned, 10);
   if (!target) return;
 
   const duration = 1600;
@@ -27,7 +30,8 @@ function animateCounter(el: HTMLElement) {
     const elapsed = now - start;
     const progress = Math.min(elapsed / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-    el.textContent = Math.round(target * eased).toString();
+    const value = Math.round(target * eased).toLocaleString();
+    el.textContent = value + (progress >= 1 ? suffix : "");
     if (progress < 1) requestAnimationFrame(tick);
   }
 
